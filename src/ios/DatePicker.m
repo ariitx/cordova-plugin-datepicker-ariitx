@@ -218,7 +218,14 @@
   NSInteger minuteInterval = [minuteIntervalString integerValue];
   NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:[options objectForKey:@"locale"]];
 
-  
+  if (@available(iOS 13.0, *)) {
+      self.datePicker.overrideUserInterfaceStyle = UIUserInterfaceStyleLight;
+  }
+    
+  if (@available(iOS 13.4, *)) {
+    self.datePicker.preferredDatePickerStyle = UIDatePickerStyleWheels;
+  }
+    
   if (allowOldDates) {
     self.datePicker.minimumDate = nil;
   }
